@@ -38,17 +38,14 @@ def main():
   try:
     print("Ingrese la matriz A con el siguiente formato \n[x1 , y1; x2, y2] ó [x1 , y1, z1; x2, y2, z2; x3, y3, z3]\nIngrese un cero para salir del programa")
     params = input()
-    system("cls")       #Limpiado de la consola
-
+    system("cls")
     if (params == '0'):
       global programaSigue
       programaSigue = False
     else:
 
       arr = armaMatriz(params)
-      print('A:\n')
-      pprint(arr)
-
+      
       if arr.shape == (2,2) or arr.shape == (3,3) :
         
         # Esta parte encuentra los eigen valores
@@ -91,7 +88,10 @@ def main():
           # Solución de e^at
           e_at = simplify(coef_sol.get(a2)*(arr**2) + coef_sol.get(a1)*arr + coef_sol.get(a1)*eye(3))
         
-        print("\n\n e^At:") #Resultado
+        #Impresión de entrada y salida
+        print('A:\n')
+        pprint(arr)
+        print("\n\n e^At:") 
         pprint(expand(nsimplify(e_at)))
 
         print('\nPresione enter para calcular otra matriz')
